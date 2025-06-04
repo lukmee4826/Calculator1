@@ -364,3 +364,5 @@ FodyWeavers.xsd
 /Calculator1/Form1.cs
 /Calculator1/Form1.Designer.cs
 /Calculator1/Form1.resx
+/Calculator1/Properties/API.cs
+/Calculator1/API.cs
