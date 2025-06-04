@@ -72,5 +72,3 @@ This project is released under the MIT License.
 
 🙋 Support / Contribution
 PRs welcome! Feel free to fork and contribute.
-
-If you'd like to add support for other currencies or async API calls, open an issue or suggestion.
