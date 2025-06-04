@@ -75,7 +75,15 @@ namespace Calculator1
 
         private void del_Click(object sender, EventArgs e)
         {
-            textBox1.Text = textBox1.Text.Length > 0 ? textBox1.Text.Substring(0, textBox1.Text.Length - 1) : string.Empty;
+            string text = textBox1.Text;
+            if (text.EndsWith("Sqr("))
+            {
+                textBox1.Text = text.Substring(0, text.Length - 4);
+            }
+            else
+            {
+                textBox1.Text = text.Length > 0 ? text.Substring(0, text.Length - 1) : string.Empty;
+            }
         }
 
         private void plus_Click(object sender, EventArgs e)
@@ -100,12 +108,12 @@ namespace Calculator1
 
         private void power_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "^2";
+            textBox1.Text += "^";
         }
 
         private void square_root_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "sqr";
+            textBox1.Text += "Sqr(";
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -140,6 +148,9 @@ namespace Calculator1
 
                 // Replace ^ with Math.Pow
                 input = ReplacePowersWithMathPow(input);
+
+                // Replace Sqr(number) with its square root value
+                input = ReplaceSqrWithSqrt(input);
 
                 var result = new DataTable().Compute(input, null);
                 textBox1.Text = result.ToString();
@@ -184,15 +195,35 @@ namespace Calculator1
 
             return input;
         }
+
+        // Helper method to replace Sqr(number) with its square root value
+        private string ReplaceSqrWithSqrt(string input)
+        {
+            // Regex to match Sqr(number)
+            System.Text.RegularExpressions.Regex sqrRegex = new System.Text.RegularExpressions.Regex(
+                @"Sqr\((?<num>-?\d+\.?\d*)\)");
+
+            while (sqrRegex.IsMatch(input))
+            {
+                input = sqrRegex.Replace(input, m =>
+                {
+                    double num = double.Parse(m.Groups["num"].Value);
+                    double result = Math.Sqrt(num);
+                    return result.ToString();
+                });
+            }
+
+            return input;
+        }
+
         
+
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-   
-
-        
     }
 }
