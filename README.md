@@ -1,13 +1,13 @@
 💱 Currency Converter (THB ⇄ JPY via USD) – WinForms C# App
 This is a simple desktop application built using C# WinForms that allows users to convert between Thai Baht (THB) and Japanese Yen (JPY) using real-time exchange rates fetched from the CurrencyFreaks API (USD as base currency).
-
+<pre> ```csharp
 Calculator1/
 ├── Form1.cs              # Main form (UI)
 ├── CurrencyConverter.cs  # Currency conversion logic (API)
 ├── Program.cs            # Entry point
 ├── Calculator1.csproj    # Project file
 ├── README.md             # Project documentation
-
+``` </pre>
 
 🚀 Features
 ✅ Convert THB to JPY using real-time rates (via USD)
@@ -62,11 +62,11 @@ GET https://api.currencyfreaks.com/v2.0/rates/latest?apikey=YOUR_API_KEY
 
 🧪 Example Usage
 From Form1.cs
-
+<pre> ```csharp
 CurrencyConverter converter = new CurrencyConverter();
 decimal jpy = converter.ConvertBahtToUsdAndUsdToJpy(1000);   // THB to JPY
 decimal thb = converter.ConvertJpyToThb(10000);               // JPY to THB
-
+``` </pre>
 🔒 License
 This project is released under the MIT License.
 
